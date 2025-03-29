@@ -23,3 +23,69 @@ This project is a **lightweight backend service** that simulates a simplified ve
  │── requirements.txt # Python dependencies
 │── README.md # Project documentation
 │── run.py # Main entry point for running the Flask app
+
+## ⚙️ Setup Instructions
+
+### **1️⃣ Clone the Repository**
+
+```sh
+
+### **2️⃣ Install Dependencies**
+pip install -r requirements.txt
+
+
+### **3️⃣ Set Up Database**
+CREATE DATABASE process_query;
+USE process_query;
+
+CREATE TABLE transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product VARCHAR(255),
+    sales DECIMAL(10,2),
+    date DATETIME
+);
+
+INSERT INTO transactions (product, sales, date) VALUES
+('Laptop', 1200.59, '2025-03-01'),
+('Smartphone', 180.30, '2025-03-02'),
+('Headphones', 5400.30, '2025-03-04')
+('Smartwatch', 67.80, '2025-03-06')
+('Tablet', 200.30, '2025-03-10')
+('Phone', 230.90, '2025-03-09')
+
+
+### **5️⃣ Run the Flask App**
+python run.py
+
+### **API Documentation**
+1. Query API
+    Endpoint: /query
+    Method: POST
+    Request_Body: {"query": "total sales for last month"}
+    Response: {
+                "query": "total sales for last month",
+                "result": [
+                    {
+                        "total_sales": "7280.19"
+                    }
+                ]
+              }
+
+2. Explain API
+    Endpoint: /explain
+    Method: POST
+    Request_Body: {"query": "sales by product"}
+    Response: {
+                "query": "sales by product",
+                "sql_translation": "SELECT product, SUM(sales) AS total_sales FROM transactions GROUP BY product"
+              }
+
+3. Validate API
+    Endpoint: /validate
+    Method: POST
+    Request_Body: {"query": "latest sales transactions"}
+    Response: {
+                "message": "Query is valid.",
+                "valid": true
+              }
+```
