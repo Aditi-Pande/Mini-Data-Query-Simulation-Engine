@@ -1,0 +1,25 @@
+# Gen AI Analytics - Mini Data Query Simulation Engine
+
+This project is a **lightweight backend service** that simulates a simplified version of an AI-powered data query system. It enables users to send **natural language queries** and receive responses in **pseudo-SQL format** along with mock results.
+
+## 🚀 Features
+
+- Convert natural language queries into **pseudo-SQL**
+- Simulate **query execution** and return mock results
+- Validate query feasibility before execution
+- Error handling for invalid queries
+
+---
+
+## 📂 Folder Structure
+
+/gen_ai_query_simulator
+│── /app │
+├── init.py │
+├── db.py # Database connection handling │
+├── routes.py # API endpoints (query, explain, validate) │
+├── query_processor.py # Converts natural language to SQL
+├── config.py # Configuration settings (DB credentials, API Key) │  
+ │── requirements.txt # Python dependencies
+│── README.md # Project documentation
+│── run.py # Main entry point for running the Flask app
